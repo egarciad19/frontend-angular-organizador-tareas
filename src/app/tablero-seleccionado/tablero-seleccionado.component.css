@@ -1,0 +1,51 @@
+/*
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    margin-right: 50px;
+    background-color: white;
+  } */
+
+  div.sticky {
+    padding: 10px;
+  }
+
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  hr {
+    border-top:1px dashed rgb(106, 106, 106);
+    /*Rest of stuff here*/
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  text-align: left;
+}
+
+.flex-item-left {
+  flex: 15%;
+}
+
+.flex-item-center {
+  flex: 65%;
+  padding: 20px;
+}
+
+.flex-item-right {
+  flex: 20%;
+}
+
+
+
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}

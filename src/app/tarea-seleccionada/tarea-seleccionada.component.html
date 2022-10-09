@@ -1,0 +1,79 @@
+
+<div>
+    <div>
+        <h2 *ngIf="nombreListaTareaSeleccionada !== null || nombreListaTareaSeleccionada !== ''" style="text-align: center;">
+            {{nombreListaTareaSeleccionada}}
+            <span style="color: #004d99" class="material-icons">
+                summarize
+            </span>
+        </h2>
+    </div>
+    <hr>
+    <div>
+        <h1 style="display: inline; margin-right:150px; color:#004d99">{{nombreTareaSeleccionada}}</h1>
+        <button mat-flat-button color="primary">Crear Lista Actividades</button>
+        <button mat-raised-button color="basic">Comentar</button>
+        <p  style="font-size: 12px; display: inline; margin-left: 60px;"><b>Asignado a: Carlos Pirir</b></p>
+
+        <div *ngIf="noActividades" style="text-align: center; padding: 40px; color: #cd0000;">
+            <h2>Esta tarea no tiene Lista de Actividades, puede crear una.</h2>
+            <img src="assets/resources/img/noactividad.png">
+        </div>  
+
+        <table *ngIf="tablaActividades">
+            <thead>
+                <th>No.</th>
+                <th>Nombre Listado Actividades</th>
+                <th>Cantidad Actividades</th>
+                <th>Porcentaje</th>
+            </thead>
+            <tbody>
+                <tr (click)="verListadoActividad(d.id)" *ngFor="let d of dataSource">
+                    <td>{{d.id}}</td>
+                    <td>{{d.lista}}</td>
+                    <td>{{d.CantidadActividade}}</td>
+                    <td>{{d.porcentaje}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="actividadSeleccionada">
+            <hr>
+            <button (click)="verTablaActividades()" mat-raised-button color="basic">
+                <span class="material-icons">
+                    arrow_back
+                    </span>
+                    Volver
+            </button>
+            <button style="float: right; margin-right: 20px;" mat-raised-button color="primary" (click)="verTablaActividades()">
+                Guardar cambios
+                <span class="material-icons">
+                    save_as
+                    </span>
+                    
+            </button>
+            <h2 style="text-align:center; ">{{nombreListadoActividad}}</h2>
+
+            <div style="width: 50%; float:left;">
+                <section class="checkboxStyle">
+                    <h4>Selecciona las actividades a completar.</h4>
+                    <p *ngFor="let a of listaActividades"><mat-checkbox checked="{{a.estado}}" (change)="completarActividad(a.id)">{{a.actividad}}</mat-checkbox></p>
+                  <!-- <p *ngFor="let a of listaActividades"><mat-checkbox formControlName="pepperoni">{{a.actividad}}</mat-checkbox></p> --> 
+            
+                </section>
+            </div>
+            
+              
+            <div style=" height: 200px; width: 50%; float: right; padding: 10px 0; ">
+                <div style="background-color: #0059b3; color: white; width: 150px; height: 150px; margin: auto; border-radius: 50%; position: relative;">
+                    <div style="position: absolute; width: inherit; height: auto; top: 50%; transform: translateY(-50%); text-align: center;">
+                        {{porcentaje | percent}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+          
+    </div>        
+</div>
+    

@@ -1,0 +1,64 @@
+<app-menu></app-menu>
+<div style="margin-left:15%;padding:1px 16px;height:1000px;">
+  <div class="sticky">
+    <h1>Mis Tableros</h1>
+  </div>
+
+  <div class="flex-container">
+
+    <div class="flex-item-left">
+      <a [routerLink]="['/tablero', 10]" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <h2>
+          Proyecto Universitario 
+        </h2>
+      </a>
+      
+      <h3>Descripción Tablero de Proyecto Universitario </h3>
+    </div>
+
+    <div class="flex-item-left">
+      <a [routerLink]="['/tablero', 10]" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <h2>
+          Tablero 2
+        </h2>
+      </a>
+      
+      <h3>Descripción Tablero 2 </h3>
+    </div>
+
+    <div *ngFor="let t of tableros" class="flex-item-left">
+      <a [routerLink]="['/tablero', t.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <h2>
+          {{t.nombre}}
+        </h2>
+      </a>
+      
+      <h3>{{t.descripcion}}</h3>
+    </div>
+
+  </div>
+
+  <!--
+  <div class="flex-container">
+
+    <div class="flex-item-left">
+      <h2>Nombre tarea</h2>
+      <h3>Descripción Tarea: </h3>
+    </div>
+    <div class="flex-item-left">
+      <h2>Nombre tarea</h2>
+      <h3>Descripción Tarea: </h3>
+    </div>
+    <div class="flex-item-left">
+      <h2>Nombre tarea</h2>
+      <h3>Descripción Tarea: </h3>
+    </div>
+
+    <div class="flex-item-left">
+      <h2>Nombre tarea</h2>
+      <h3>Descripción Tarea: </h3>
+    </div>
+
+  </div> -->
+
+</div>

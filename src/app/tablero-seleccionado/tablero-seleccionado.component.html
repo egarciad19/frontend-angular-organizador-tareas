@@ -1,0 +1,116 @@
+<app-menu></app-menu>
+
+
+<div style="margin-left:15%;padding:1px 16px;height:500px;">
+    <div class="sticky">
+        <h1 style="display: inline;">
+            Proyecto Universitario
+            <span class="material-icons">
+                event_available
+            </span>
+        </h1>
+
+        <button style="margin-left: 20px;" mat-raised-button color="primary" (click)="openDialog()">
+            Crear Lista Tarea
+            <span class="material-icons">
+                add_circle
+            </span>
+        </button>
+        <button style="margin-left: 20px;" mat-raised-button color="basic">
+            Compartir
+            <span class="material-icons">
+                share
+            </span>
+        </button>
+    </div>
+
+    <hr>
+
+    <div class="flex-container">
+        <!--seccion de Listado de Tareas-->
+        <div class="flex-item-left">
+            <mat-card style=" width: 180px; height: 500px;">
+                <h3>Listas de Tareas</h3>
+                <mat-card-content>
+                    <mat-accordion> <!--ngFor permite recorrer el arreglo de listas de tareas, creando varios acordiones-->
+                        <mat-expansion-panel *ngFor="let l of listaTareas" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{l.nombreListado}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <!--Boton donde se listan las tareas de cada lista-->
+                            <button 
+                                (click)="verTareaSeleccionada(t.id, t.nombre, l.nombreListado)"
+                                style="display: block;" 
+                                *ngFor="let t of l.tareas" 
+                                mat-icon-button mat color="primary">
+                                {{t.nombre}} 
+                            </button>
+                            <button 
+                                (click)="crearTarea()"
+                                style="display: block;" 
+                                mat-icon-button mat color="primary">
+                                Crear Tarea
+                                <span class="material-icons">add_circle</span>
+                            </button>
+
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!--Seccion de Tarea seleccionada-->
+        <div class="flex-item-center">
+            <app-tarea-seleccionada 
+            *ngIf="verTarea"
+            [idTareaSeleccionada]="idTarea"
+            [nombreTareaSeleccionada]="nombreTarea"
+            [nombreListaTareaSeleccionada]="nombreListadoTarea">
+            </app-tarea-seleccionada>
+        </div>
+
+        <!-- seccion de Comentarios-->
+        <div class="flex-item-right">
+            <mat-card style=" height: 500px;">
+                <h3>Comentarios</h3>
+                <mat-card-content>
+                    <mat-card style="background-color: #d6e0f5; color: #000080;">
+                        <mat-panel-title style="background-color: #d6e0f5; color: #000080; font-weight: bold;">
+                            Carlos Pirir
+                        </mat-panel-title>
+                        <mat-panel-description>20/09/2022 - 10:00 pm</mat-panel-description>
+                        Este es un comentario para la tarea 1.
+                    </mat-card>
+                </mat-card-content>
+
+                <mat-card-content>
+                    <mat-card style="background-color: #d6e0f5; color: #000080;">
+                        <mat-panel-title style="background-color: #d6e0f5; color: #000080; font-weight: bold;">
+                            Maria Torres
+                        </mat-panel-title>
+                        <mat-panel-description>20/09/2022 - 9:00 pm</mat-panel-description>
+                        Este es un comentario en el tablero de Proyecto Universitario.
+                    </mat-card>
+                </mat-card-content>
+
+                <mat-card-content>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Agregar Comentario</mat-label>
+                        <textarea #comentario (input)="agregandoComentario()" matInput autocomplete="off" rows="2" cdkTextareaAutosize="true" value=""></textarea>
+                    </mat-form-field>
+                    <div style="text-align: center;">
+                        <button style="margin-right: 10px;" (click)="ocultarBotonComentario(); limpiarComentario();"  *ngIf="comentando" mat-mini-fab color="warn">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                        <button *ngIf="comentando" mat-mini-fab color="primary">
+                            <mat-icon>send</mat-icon>
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

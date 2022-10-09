@@ -1,0 +1,33 @@
+
+
+  table {
+    margin-top: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+    
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    color: black;
+    
+  }
+  
+  tbody tr:hover {
+    background-color: rgb(100, 185, 255);
+    color:#ffffff !important;
+    cursor: pointer;
+  }
+
+  hr {
+    border-top:1px dashed rgb(106, 106, 106);
+    /*Rest of stuff here*/
+}
+
+.checkboxStyle{
+  margin: 12px 0;
+  font-size: 18px;
+}
